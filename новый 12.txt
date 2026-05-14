@@ -1,0 +1,991 @@
+
+sergeevi4@DESKTOP-BN7767T MINGW64 ~/PycharmProjects/master-podolog-backend (feature/media)
+$ make test
+docker compose --env-file .env.test -f docker-compose.test.yml up --build
+#1 [internal] load local bake definitions
+#1 reading from stdin 644B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.03kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.1s
+
+#4 [internal] load metadata for ghcr.io/astral-sh/uv:latest
+#4 DONE 2.8s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 FROM ghcr.io/astral-sh/uv:latest@sha256:1025398289b62de8269e70c45b91ffa37c373f38118d7da036fb8bb8efc85d97
+#6 resolve ghcr.io/astral-sh/uv:latest@sha256:1025398289b62de8269e70c45b91ffa37c373f38118d7da036fb8bb8efc85d97 0.0s done
+#6 DONE 0.0s
+
+#7 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:46cb7cc2877e60fbd5e21a9ae6115c30ace7a077b9f8772da879e4590c18c2e3
+#7 resolve docker.io/library/python:3.12-slim@sha256:46cb7cc2877e60fbd5e21a9ae6115c30ace7a077b9f8772da879e4590c18c2e3 0.0s done
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 78.61kB 0.1s done
+#8 DONE 0.1s
+
+#9 [builder 3/4] WORKDIR /app
+#9 CACHED
+
+#10 [builder 4/4] RUN --mount=type=cache,target=/root/.cache/uv     --mount=type=bind,source=uv.lock,target=uv.lock     --mount=type=bind,source=pyproject.toml,target=pyproject.toml     bash -c '        if [ -n "$GROUP" ]; then             echo "Installing dependencies for group: $GROUP";             uv sync --group "$GROUP" --locked --no-editable;         else             echo "Installing default dependencies";             uv sync --locked --no-editable;         fi     '
+#10 CACHED
+
+#11 [stage-1 3/8] COPY alembic.ini .
+#11 CACHED
+
+#12 [builder 2/4] COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+#12 CACHED
+
+#13 [stage-1 4/8] COPY --from=builder --chown=app:app /app/.venv /app/.venv
+#13 CACHED
+
+#14 [stage-1 2/8] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 5/8] COPY ./src ./src
+#15 CACHED
+
+#16 [stage-1 6/8] COPY ./tests ./tests
+#16 DONE 0.1s
+
+#17 [stage-1 7/8] COPY ./docker/scripts ./scripts
+#17 DONE 0.0s
+
+#18 [stage-1 8/8] COPY ./scripts/create_admin.py ./scripts/create_admin.py
+#18 DONE 0.0s
+
+#19 exporting to image
+#19 exporting layers 0.1s done
+#19 exporting manifest sha256:582a9aa6aac509b96919709c0f3d07de8ae7369d2a03f8ec2983b06c328bd85c 0.0s done
+#19 exporting config sha256:57d2ae5b0a77e2d4d2b2b8b47a35a2f02ddb008abee17ecead4893d8a5db31e0 0.0s done
+#19 exporting attestation manifest sha256:9a148ab19d9e12b4f4df69419d7ddc515d6c47c3a8c54f8bfd9c3b70eac36b5d 0.0s done
+#19 exporting manifest list sha256:b3e8aba4a6e1dce19c4e8c84dd5e1b2f8ba0cbb7f0942f3ccf35ad0fecce59e6 0.0s done
+#19 naming to docker.io/library/master-podolog-test-app:latest done
+#19 unpacking to docker.io/library/master-podolog-test-app:latest 0.1s done
+#19 DONE 0.3s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+[+] up 2/2
+ ✔ Image master-podolog-test-app Built                                                                                                                                                                                          3.8s
+ ✔ Container TestAppTemplate     Recreated                                                                                                                                                                                      0.3s
+Attaching to TestAppTemplate, TestDBTemplate, TestRedisTemplate
+TestRedisTemplate  | 1:C 14 May 2026 08:34:54.691 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+TestRedisTemplate  | 1:C 14 May 2026 08:34:54.691 * Redis version=7.4.8, bits=64, commit=00000000, modified=0, pid=1, just started
+TestRedisTemplate  | 1:C 14 May 2026 08:34:54.691 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.691 * monotonic clock: POSIX clock_gettime
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.692 * Running mode=standalone, port=6379.
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.693 * Server initialized
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.693 * Loading RDB produced by version 7.4.8
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.693 * RDB age 9 seconds
+
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.693 * RDB memory usage when created 1.05 Mb
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.693 * Done loading RDB, keys loaded: 0, keys expired: 0.
+
+
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.693 * DB loaded from disk: 0.000 seconds
+TestDBTemplate     | 
+TestRedisTemplate  | 1:M 14 May 2026 08:34:54.693 * Ready to accept connections tcp
+TestDBTemplate     | 
+TestDBTemplate     | 2026-05-14 08:34:54.808 UTC [1] LOG:  starting PostgreSQL 17.9 (Debian 17.9-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+TestDBTemplate     | 2026-05-14 08:34:54.809 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+TestDBTemplate     | 2026-05-14 08:34:54.809 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+TestDBTemplate     | 2026-05-14 08:34:54.814 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+TestDBTemplate     | 2026-05-14 08:34:54.820 UTC [29] LOG:  database system was shut down at 2026-05-14 08:34:45 UTC
+TestDBTemplate     | 2026-05-14 08:34:54.830 UTC [1] LOG:  database system is ready to accept connections
+Container TestDBTemplate Healthy 
+TestAppTemplate    | ============================= test session starts ==============================
+TestAppTemplate    | platform linux -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /app/.venv/bin/python
+TestAppTemplate    | cachedir: .pytest_cache
+TestAppTemplate    | rootdir: /app
+TestAppTemplate    | configfile: pyproject.toml
+TestAppTemplate    | plugins: asyncio-1.3.0, anyio-4.13.0
+TestAppTemplate    | asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=session, asyncio_default_test_loop_scope=session
+TestAppTemplate    | collecting ... collected 383 items
+TestAppTemplate    | 
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py::test_article_list_returns_published_for_active_plan PASSED [  0%]
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py::test_article_list_returns_published_for_limited_plan PASSED [  0%]
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py::test_article_detail_active_plan_returns_full_content PASSED [  0%]
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py::test_article_detail_limited_plan_hides_content PASSED [  1%]
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py::test_article_detail_trial_plan_returns_full_content PASSED [  1%]
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py::test_article_detail_draft_raises_not_found PASSED [  1%]
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py::test_article_detail_draft_raises_not_found_for_limited PASSED [  1%]
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py::test_article_detail_nonexistent_slug_raises_not_found PASSED [  2%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_approve_pending_request PASSED [  2%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_decline_pending_request PASSED [  2%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_cancel_approved_request PASSED [  2%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_foreign_master_gets_not_found PASSED [  3%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_foreign_org_gets_not_found PASSED [  3%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_double_approve_raises_invalid_transition PASSED [  3%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_decline_after_decline_raises PASSED [  3%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_approve_with_wrong_slot_status_raises_conflict PASSED [  4%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_list_returns_only_own_requests PASSED [  4%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_list_empty_for_unknown_master PASSED [  4%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_actions.py::test_list_filters_by_status PASSED [  4%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_usecase.py::test_race_condition PASSED [  5%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_usecase.py::test_anti_double_booking_same_day PASSED [  5%]
+TestAppTemplate    | tests/integration/booking_request/test_booking_request_usecase.py::test_db_integrity_after_success PASSED [  5%]
+TestAppTemplate    | tests/integration/slot_generation/test_slot_generation.py::test_generation_creates_slots PASSED [  6%]
+TestAppTemplate    | tests/integration/slot_generation/test_slot_generation.py::test_idempotent_second_run PASSED [  6%]
+TestAppTemplate    | tests/integration/slot_generation/test_slot_generation.py::test_booked_slot_not_overwritten PASSED [  6%]
+TestAppTemplate    | tests/integration/slot_generation/test_slot_generation.py::test_dst_boundary_no_duplicates PASSED [  6%]
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_new_user_gets_trial_entitlements PASSED [  7%]
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_active_subscription_returns_active_plan PASSED [  7%]
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_expired_subscription_returns_limited_plan PASSED [  7%]
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_count_active_counts_only_non_deleted_clients PASSED [  7%]
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_limited_subscription_raises_403 PASSED [  8%]
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_client_cap_reached_with_real_count PASSED [  8%]
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_client_below_cap_passes_with_real_count PASSED [  8%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_dau_counts_distinct_users_per_day PASSED [  8%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_dau_excludes_events_outside_period PASSED [  9%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_dau_empty_when_no_events_in_range PASSED [  9%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_mau_counts_distinct_users_per_month PASSED [  9%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_mau_same_user_multiple_events_counts_once PASSED [  9%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_top_features_returns_correct_events_and_users_count PASSED [ 10%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_top_features_sorted_by_events_count_desc PASSED [ 10%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_top_features_excludes_non_feature_use_events PASSED [ 10%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_top_features_excludes_events_outside_period PASSED [ 10%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_raises_when_date_from_after_date_to PASSED [ 11%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_raises_when_range_exceeds_180_days PASSED [ 11%]
+TestAppTemplate    | tests/integration/test_admin_telemetry_metrics.py::test_single_day_range_inclusive PASSED [ 11%]
+TestAppTemplate    | tests/integration/test_finalize_flow.py::TestMediaFinalizeIntegration::test_full_before_photo_upload_sequence_7_photos PASSED [ 12%]
+TestAppTemplate    | tests/integration/test_finalize_flow.py::TestMediaFinalizeIntegration::test_soft_deleted_photo_not_counted_in_limit PASSED [ 12%]
+TestAppTemplate    | tests/integration/test_finalize_flow.py::TestMediaFinalizeIntegration::test_separate_limits_before_and_after_photos PASSED [ 12%]
+TestAppTemplate    | tests/integration/test_finalize_flow.py::TestMediaFinalizeIntegration::test_http_409_response_code_for_limit_exceeded PASSED [ 12%]
+TestAppTemplate    | tests/integration/test_finalize_flow.py::TestMediaFinalizeIntegration::test_finalize_fails_when_storage_object_missing PASSED [ 13%]
+TestAppTemplate    | tests/integration/test_media_upload_flow.py::test_complete_media_upload_flow PASSED [ 13%]
+TestAppTemplate    | tests/integration/test_media_upload_flow.py::test_upload_attachment_to_client PASSED [ 13%]
+TestAppTemplate    | tests/integration/test_media_upload_flow.py::test_upload_article_image_no_binding PASSED [ 13%]
+TestAppTemplate    | tests/integration/test_media_upload_flow.py::test_download_access_denied_for_foreign_org PASSED [ 14%]
+TestAppTemplate    | tests/integration/test_media_upload_flow.py::test_download_rejected_for_soft_deleted_media PASSED [ 14%]
+TestAppTemplate    | tests/integration/test_media_upload_flow.py::test_download_creator_can_always_access PASSED [ 14%]
+TestAppTemplate    | tests/integration/test_media_upload_flow.py::test_article_image_public_access PASSED [ 14%]
+TestAppTemplate    | tests/integration/test_media_upload_flow.py::test_limited_mode_blocks_org_bound_media PASSED [ 15%]
+TestAppTemplate    | tests/integration/test_telemetry_events.py::test_valid_batch_persists_all_events_to_db PASSED [ 15%]
+TestAppTemplate    | tests/integration/test_telemetry_events.py::test_valid_event_stored_with_correct_org_and_user PASSED [ 15%]
+TestAppTemplate    | tests/integration/test_telemetry_events.py::test_pii_event_not_persisted_valid_ones_are PASSED [ 15%]
+TestAppTemplate    | tests/integration/test_telemetry_events.py::test_old_timestamp_event_not_persisted PASSED [ 16%]
+TestAppTemplate    | tests/integration/test_telemetry_events.py::test_future_timestamp_event_not_persisted PASSED [ 16%]
+TestAppTemplate    | tests/integration/test_telemetry_events.py::test_pii_error_does_not_contain_pii_value PASSED [ 16%]
+TestAppTemplate    | tests/integration/test_telemetry_events.py::test_duplicate_event_id_counted_as_accepted_not_error PASSED [ 16%]
+TestAppTemplate    | tests/integration/test_telemetry_events.py::test_same_event_id_different_users_both_persisted PASSED [ 17%]
+TestAppTemplate    | tests/test_admin_articles.py::test_list_articles_empty PASSED            [ 17%]
+TestAppTemplate    | tests/test_admin_articles.py::test_create_article_default_draft PASSED   [ 17%]
+TestAppTemplate    | tests/test_admin_articles.py::test_create_article_auto_slug PASSED       [ 18%]
+TestAppTemplate    | tests/test_admin_articles.py::test_create_article_slug_conflict PASSED   [ 18%]
+TestAppTemplate    | tests/test_admin_articles.py::test_list_articles_with_status_filter PASSED [ 18%]
+TestAppTemplate    | tests/test_admin_articles.py::test_list_articles_with_search PASSED      [ 18%]
+TestAppTemplate    | tests/test_admin_articles.py::test_update_article_status PASSED          [ 19%]
+TestAppTemplate    | tests/test_admin_articles.py::test_update_article_content PASSED         [ 19%]
+TestAppTemplate    | tests/test_admin_articles.py::test_update_nonexistent_article PASSED     [ 19%]
+TestAppTemplate    | tests/test_admin_articles.py::test_update_article_slug_conflict PASSED   [ 19%]
+TestAppTemplate    | tests/test_admin_articles.py::test_only_content_roles_can_manage_articles PASSED [ 20%]
+TestAppTemplate    | tests/test_admin_articles.py::test_update_article_tags PASSED            [ 20%]
+TestAppTemplate    | tests/test_admin_audit_dao.py::test_admin_audit_log_dao_builds_filtered_stable_page_query PASSED [ 20%]
+TestAppTemplate    | tests/test_admin_audit_router.py::test_admin_audit_log_endpoint_requires_superadmin_role PASSED [ 20%]
+TestAppTemplate    | tests/test_admin_audit_use_case.py::test_list_admin_audit_logs_maps_payload_and_forwards_filters PASSED [ 21%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_login_success PASSED      [ 21%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_login_returns_409_when_active_session_exists PASSED [ 21%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_login_auto_revokes_expired_session PASSED [ 21%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_login_invalid_credentials PASSED [ 22%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_login_user_not_found PASSED [ 22%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_login_blocked_user PASSED [ 22%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_login_temp_locked PASSED  [ 22%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_refresh_success PASSED    [ 23%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_refresh_inactive_session_returns_401 PASSED [ 23%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_refresh_token_mismatch_deactivates_session PASSED [ 23%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_refresh_blocked_user PASSED [ 24%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_logout_deactivates_session PASSED [ 24%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_logout_idempotent PASSED  [ 24%]
+TestAppTemplate    | tests/test_admin_auth_use_cases.py::test_admin_logout_nonexistent_session_idempotent PASSED [ 24%]
+TestAppTemplate    | tests/test_admin_clients.py::test_admin_clients_list_searches_across_orgs_and_masks_for_support PASSED [ 25%]
+TestAppTemplate    | tests/test_admin_clients.py::test_admin_client_card_superadmin_gets_masked_data_and_audits PASSED [ 25%]
+TestAppTemplate    | tests/test_admin_clients.py::test_content_editor_cannot_open_admin_clients PASSED [ 25%]
+TestAppTemplate    | tests/test_admin_clients.py::test_superadmin_restores_deleted_client_inside_retention_and_audits PASSED [ 25%]
+TestAppTemplate    | tests/test_admin_clients.py::test_superadmin_cannot_restore_client_after_retention_window PASSED [ 26%]
+TestAppTemplate    | tests/test_admin_clients.py::test_tech_support_cannot_restore_deleted_client PASSED [ 26%]
+TestAppTemplate    | tests/test_admin_clients_use_case.py::test_admin_client_list_masks_sensitive_fields_for_support PASSED [ 26%]
+TestAppTemplate    | tests/test_admin_clients_use_case.py::test_admin_client_card_masks_sensitive_fields_for_superadmin PASSED [ 26%]
+TestAppTemplate    | tests/test_admin_clients_use_case.py::test_set_admin_client_bad_flag_updates_and_masks_response PASSED [ 27%]
+TestAppTemplate    | tests/test_admin_clients_use_case.py::test_admin_client_card_raises_for_missing_client PASSED [ 27%]
+TestAppTemplate    | tests/test_admin_clients_use_case.py::test_restore_admin_client_restores_deleted_client_inside_retention PASSED [ 27%]
+TestAppTemplate    | tests/test_admin_clients_use_case.py::test_restore_admin_client_rejects_expired_retention_window PASSED [ 27%]
+TestAppTemplate    | tests/test_admin_clients_use_case.py::test_restore_admin_client_rejects_active_client PASSED [ 28%]
+TestAppTemplate    | tests/test_admin_impersonation_use_case.py::test_issue_impersonation_token_audits_and_notifies PASSED [ 28%]
+TestAppTemplate    | tests/test_admin_master_account.py::test_superadmin_unblocks_master_idempotently_and_audits PASSED [ 28%]
+TestAppTemplate    | tests/test_admin_master_account.py::test_tech_support_cannot_unblock_master PASSED [ 28%]
+TestAppTemplate    | tests/test_admin_master_account.py::test_unblock_uses_database_role_not_token_claim PASSED [ 29%]
+TestAppTemplate    | tests/test_admin_master_account_use_case.py::test_unblock_master_account_changes_blocked_user_and_revokes_sessions PASSED [ 29%]
+TestAppTemplate    | tests/test_admin_master_account_use_case.py::test_unblock_master_account_is_noop_for_active_user PASSED [ 29%]
+TestAppTemplate    | tests/test_admin_master_account_use_case.py::test_unblock_master_account_raises_for_missing_user PASSED [ 30%]
+TestAppTemplate    | tests/test_admin_masters.py::test_support_can_filter_masters_without_extra_fields PASSED [ 30%]
+TestAppTemplate    | tests/test_admin_masters.py::test_master_list_rejects_content_editor PASSED [ 30%]
+TestAppTemplate    | tests/test_admin_masters.py::test_superadmin_can_issue_impersonation_token_audits_and_notifies PASSED [ 30%]
+TestAppTemplate    | tests/test_admin_masters.py::test_content_editor_cannot_issue_impersonation_token PASSED [ 31%]
+TestAppTemplate    | tests/test_admin_masters.py::test_master_list_pagination_sorting_is_stable PASSED [ 31%]
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_forwards_filters_and_maps_trial_plan PASSED [ 31%]
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_maps_active_and_limited_plans PASSED [ 31%]
+TestAppTemplate    | tests/test_admin_medical_texts_use_case.py::test_export_keeps_all_columns_for_mixed_rows PASSED [ 32%]
+TestAppTemplate    | tests/test_admin_medical_texts_use_case.py::test_export_skips_fully_empty_rows PASSED [ 32%]
+TestAppTemplate    | tests/test_admin_medical_texts_use_case.py::test_export_writes_full_header_when_no_rows PASSED [ 32%]
+TestAppTemplate    | tests/test_admin_rbac.py::test_admin_token_includes_role PASSED          [ 32%]
+TestAppTemplate    | tests/test_admin_rbac.py::test_require_admin_superadmin_can_block_user PASSED [ 33%]
+TestAppTemplate    | tests/test_admin_rbac.py::test_require_admin_content_editor_cannot_block_user PASSED [ 33%]
+TestAppTemplate    | tests/test_admin_rbac.py::test_require_admin_invalid_token_rejected PASSED [ 33%]
+TestAppTemplate    | tests/test_admin_rbac.py::test_admin_login_creates_audit_log PASSED      [ 33%]
+TestAppTemplate    | tests/test_admin_rbac.py::test_block_user_creates_audit_log PASSED       [ 34%]
+TestAppTemplate    | tests/test_admin_rbac.py::test_admin_grant_requires_superadmin PASSED    [ 34%]
+TestAppTemplate    | tests/test_admin_rbac.py::test_admin_grant_creates_audit_log PASSED      [ 34%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_raises_when_date_from_after_date_to PASSED [ 34%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_raises_when_range_exceeds_180_days PASSED [ 35%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_same_date_is_valid PASSED            [ 35%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_exactly_180_days_is_valid PASSED     [ 35%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_dau_tuples_mapped_to_dto PASSED      [ 36%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_dau_empty_when_dao_returns_empty PASSED [ 36%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_mau_tuples_mapped_to_dto_with_year_month_string PASSED [ 36%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_top_features_tuples_mapped_to_dto PASSED [ 36%]
+TestAppTemplate    | tests/test_admin_telemetry.py::test_top_features_empty_when_dao_returns_empty PASSED [ 37%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_create_appointment_success PASSED [ 37%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_create_appointment_raises_client_not_found PASSED [ 37%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_create_appointment_raises_when_duplicate_exists PASSED [ 37%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_get_all_appointments_converts_date_to_datetime_range PASSED [ 38%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_get_appointment_by_id_success PASSED [ 38%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_get_appointment_by_id_raises_when_missing PASSED [ 38%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_patch_appointment_success PASSED [ 38%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_patch_appointment_raises_when_missing PASSED [ 39%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_delete_appointment_success PASSED [ 39%]
+TestAppTemplate    | tests/test_appointment_use_cases.py::test_delete_appointment_raises_when_missing PASSED [ 39%]
+TestAppTemplate    | tests/test_audit_payload.py::test_audit_payload_has_required_shape_and_redacts_sensitive_meta PASSED [ 39%]
+TestAppTemplate    | tests/test_audit_payload.py::test_business_operation_audit_action_map_covers_acceptance_operations PASSED [ 40%]
+TestAppTemplate    | tests/test_auth_protection.py::test_login_locks_after_n_failures PASSED  [ 40%]
+TestAppTemplate    | tests/test_auth_protection.py::test_successful_login_clears_block PASSED [ 40%]
+TestAppTemplate    | tests/test_auth_protection.py::test_identifier_hash_is_not_plain_identifier PASSED [ 40%]
+TestAppTemplate    | tests/test_auth_protection.py::test_ip_rate_limit_blocks_even_without_identifier_lock PASSED [ 41%]
+TestAppTemplate    | tests/test_auth_protection.py::test_repeated_lock_cycles_escalate_retry_after PASSED [ 41%]
+TestAppTemplate    | tests/test_auth_protection.py::test_login_email_normalizes_identifier_before_lookup_and_tracking PASSED [ 41%]
+TestAppTemplate    | tests/test_auth_protection.py::test_record_failure_triggers_cleanup_with_retention_window PASSED [ 42%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_login_email_success_returns_token_pair_and_records_success PASSED [ 42%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_login_email_raises_invalid_credentials_and_records_failure PASSED [ 42%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_login_email_raises_temp_lock_when_precheck_is_locked PASSED [ 42%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_login_email_raises_temp_lock_when_failure_reaches_threshold PASSED [ 43%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_login_email_raises_blocked_for_blocked_user PASSED [ 43%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_login_email_raises_inactive_for_non_active_user PASSED [ 43%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_refresh_success_rotates_token_pair PASSED [ 43%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_refresh_raises_invalid_token_when_user_missing PASSED [ 44%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_refresh_raises_blocked_when_user_not_active PASSED [ 44%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_refresh_raises_revoked_when_token_issued_before_revoke PASSED [ 44%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_logout_all_delegates_to_user_dao PASSED [ 44%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_get_me_returns_current_user_dto PASSED [ 45%]
+TestAppTemplate    | tests/test_auth_use_cases.py::test_get_me_raises_invalid_token_when_user_missing PASSED [ 45%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_pending_approve PASSED       [ 45%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_pending_decline PASSED       [ 45%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_approved_cancel PASSED       [ 46%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[approved-approve] PASSED [ 46%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[declined-approve] PASSED [ 46%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[declined-decline] PASSED [ 46%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[cancelled-cancel] PASSED [ 47%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[cancelled-approve] PASSED [ 47%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[expired-approve] PASSED [ 47%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[expired-decline] PASSED [ 48%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[expired-cancel] PASSED [ 48%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_transition_raises[pending-cancel] PASSED [ 48%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_request_not_found_raises PASSED [ 48%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_slot_not_found_raises PASSED [ 49%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_slot_conflict_raises PASSED  [ 49%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_cancel_slot_conflict_raises PASSED [ 49%]
+TestAppTemplate    | tests/test_booking_request_actions.py::test_invalid_action_string_raises PASSED [ 49%]
+TestAppTemplate    | tests/test_booking_slot_generation_job.py::test_create_generation_job_logs_queued_and_commits FAILED [ 50%]
+TestAppTemplate    | tests/test_client_export_jobs.py::test_create_export_job_sets_queued_and_logs_audit PASSED [ 50%]
+TestAppTemplate    | tests/test_client_export_jobs.py::test_export_download_link_happy_and_negative_paths FAILED [ 50%]
+TestAppTemplate    | tests/test_client_import.py::test_create_client_import_job FAILED        [ 50%]
+TestAppTemplate    | tests/test_client_import.py::test_get_client_import_status FAILED        [ 51%]
+TestAppTemplate    | tests/test_client_import.py::test_get_client_import_report_link FAILED   [ 51%]
+TestAppTemplate    | tests/test_client_org_validation.py::test_org_missing_raises PASSED      [ 51%]
+TestAppTemplate    | tests/test_client_org_validation.py::test_org_exists_allows_create PASSED [ 51%]
+TestAppTemplate    | tests/test_client_owner_history.py::test_transfer_owner_updates_client_and_logs_consistent_history PASSED [ 52%]
+TestAppTemplate    | tests/test_client_owner_history.py::test_owner_history_is_filtered_by_tenant_for_master_and_support PASSED [ 52%]
+TestAppTemplate    | tests/test_device_use_cases.py::test_register_device_does_not_create_duplicate_tokens PASSED [ 52%]
+TestAppTemplate    | tests/test_device_use_cases.py::test_register_device_rebinds_existing_token_to_current_user PASSED [ 53%]
+TestAppTemplate    | tests/test_device_use_cases.py::test_deactivate_device_deactivates_only_current_user_token PASSED [ 53%]
+TestAppTemplate    | tests/test_device_use_cases.py::test_register_device_rejects_invalid_platform PASSED [ 53%]
+TestAppTemplate    | tests/test_devices.py::test_register_device_does_not_create_duplicate_token PASSED [ 53%]
+TestAppTemplate    | tests/test_devices.py::test_register_device_rebinds_duplicate_token_to_authorized_user PASSED [ 54%]
+TestAppTemplate    | tests/test_devices.py::test_deactivate_device_marks_current_user_token_inactive PASSED [ 54%]
+TestAppTemplate    | tests/test_devices.py::test_register_device_rejects_invalid_platform PASSED [ 54%]
+TestAppTemplate    | tests/test_devices.py::test_register_device_requires_authorized_master PASSED [ 54%]
+TestAppTemplate    | tests/test_generate_booking_slot.py::test_generate_one_rule_no_exceptions PASSED [ 55%]
+TestAppTemplate    | tests/test_generate_booking_slot.py::test_timezone_conversion_moscow PASSED [ 55%]
+TestAppTemplate    | tests/test_generate_booking_slot.py::test_idempotent_second_run PASSED   [ 55%]
+TestAppTemplate    | tests/test_generate_booking_slot.py::test_booked_slots_not_overwritten PASSED [ 55%]
+TestAppTemplate    | tests/test_generate_booking_slot.py::test_unavailable_exception_filters_slots PASSED [ 56%]
+TestAppTemplate    | tests/test_generate_booking_slot.py::test_additional_exception_adds_slots PASSED [ 56%]
+TestAppTemplate    | tests/test_generate_booking_slot.py::test_dst_boundary_no_gaps PASSED    [ 56%]
+TestAppTemplate    | tests/test_logging_safety.py::test_log_masking_redacts_email_phone_and_medical_fields PASSED [ 56%]
+TestAppTemplate    | tests/test_logging_safety.py::test_log_masking_redacts_sensitive_dict_args PASSED [ 57%]
+TestAppTemplate    | tests/test_logging_safety.py::test_mask_helpers_share_unified_format PASSED [ 57%]
+TestAppTemplate    | tests/test_logging_safety.py::test_log_template_checker_flags_sensitive_variables PASSED [ 57%]
+TestAppTemplate    | tests/test_logging_safety.py::test_log_template_checker_allows_safe_templates PASSED [ 57%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_register_success_creates_org_user_and_tokens PASSED [ 58%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_register_raises_when_email_already_exists PASSED [ 58%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_register_raises_when_phone_already_exists PASSED [ 58%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_register_normalizes_phone_by_stripping_non_digits PASSED [ 59%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_login_success_with_email_records_success PASSED [ 59%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_login_success_with_phone_normalizes_lookup PASSED [ 59%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_login_raises_invalid_credentials_and_records_failure PASSED [ 59%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_login_raises_temp_lock_on_precheck PASSED [ 60%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_login_raises_temp_lock_after_failed_attempt PASSED [ 60%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_login_raises_blocked_for_blocked_user PASSED [ 60%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_login_raises_invalid_credentials_for_non_active_user PASSED [ 60%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_refresh_success_rotates_token_pair PASSED [ 61%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_refresh_raises_invalid_token_when_user_missing PASSED [ 61%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_refresh_raises_blocked_when_user_blocked PASSED [ 61%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_refresh_raises_invalid_token_for_non_active_user PASSED [ 61%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_refresh_raises_revoked_when_token_issued_before_revoke PASSED [ 62%]
+TestAppTemplate    | tests/test_master_auth_use_cases.py::test_master_logout_all_delegates_to_user_dao PASSED [ 62%]
+TestAppTemplate    | tests/test_media_archive_jobs.py::test_create_archive_job_sets_queued_and_logs_audit PASSED [ 62%]
+TestAppTemplate    | tests/test_media_archive_jobs.py::test_job_status_and_download_link_happy_path PASSED [ 62%]
+TestAppTemplate    | tests/test_media_archive_jobs.py::test_job_download_link_rejects_not_ready_and_expired PASSED [ 63%]
+TestAppTemplate    | tests/test_media_archive_jobs.py::test_worker_processes_done_and_failed_paths PASSED [ 63%]
+TestAppTemplate    | tests/test_media_archive_jobs.py::test_cleanup_expired_archive_results PASSED [ 63%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_for_foreign_org_returns_404 PASSED [ 63%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_for_soft_deleted_media_returns_404 PASSED [ 64%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_for_expired_media_returns_410 PASSED [ 64%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_intent_for_media_at_exact_expiry_returns_410 PASSED [ 64%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_for_media_at_exact_expiry_returns_410 PASSED [ 65%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_returns_short_url PASSED [ 65%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_logs_access_and_respects_ttl PASSED [ 65%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_denied_in_limited_mode_for_org_media PASSED [ 65%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_allows_article_image_in_limited_mode PASSED [ 66%]
+TestAppTemplate    | tests/test_media_download_links.py::test_download_link_rejects_invalid_ttl_config PASSED [ 66%]
+TestAppTemplate    | tests/test_media_download_links.py::test_delete_media_is_idempotent PASSED [ 66%]
+TestAppTemplate    | tests/test_media_download_links.py::test_delete_media_for_foreign_org_returns_404 PASSED [ 66%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_before_photo_within_limit PASSED [ 67%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_after_photo_within_limit PASSED [ 67%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_attachment_no_limit PASSED [ 67%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_idempotent_existing_not_deleted PASSED [ 67%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_before_photo_limit_exceeded PASSED [ 68%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_after_photo_limit_exceeded PASSED [ 68%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_invalid_binding_appointment_not_in_org PASSED [ 68%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_rejects_missing_storage_object PASSED [ 68%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_article_image_no_binding PASSED [ 69%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_soft_deleted_media_can_be_reused PASSED [ 69%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_photo_exactly_at_limit_still_fails PASSED [ 69%]
+TestAppTemplate    | tests/test_media_finalize.py::TestFinalizeMediaUseCase::test_finalize_photo_below_limit_succeeds PASSED [ 69%]
+TestAppTemplate    | tests/test_media_schema_validation.py::test_upload_intent_requires_appointment_for_before_photo PASSED [ 70%]
+TestAppTemplate    | tests/test_media_schema_validation.py::test_upload_intent_rejects_client_binding_for_before_photo PASSED [ 70%]
+TestAppTemplate    | tests/test_media_schema_validation.py::test_upload_intent_attachment_requires_exactly_one_binding PASSED [ 70%]
+TestAppTemplate    | tests/test_media_schema_validation.py::test_finalize_media_rejects_article_image_binding PASSED [ 71%]
+TestAppTemplate    | tests/test_media_schema_validation.py::test_zip_archive_response_parses_appointment_id_as_uuid PASSED [ 71%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_article_image_allowed_for_limited_plan PASSED [ 71%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_article_image_allowed_for_trial_plan PASSED [ 71%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_own_media_denied_for_limited_plan PASSED [ 72%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_org_media_denied_for_limited_plan PASSED [ 72%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_org_media_allowed_for_trial_plan PASSED [ 72%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_org_media_allowed_for_active_plan PASSED [ 72%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_foreign_org_media_denied_for_trial_plan PASSED [ 73%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_intent_article_image_allowed_for_limited_plan PASSED [ 73%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_intent_before_photo_denied_for_limited_plan PASSED [ 73%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_intent_before_photo_allowed_for_trial_plan PASSED [ 73%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_link_before_photo_denied_for_limited_plan PASSED [ 74%]
+TestAppTemplate    | tests/test_media_subscription_policy.py::test_link_before_photo_allowed_for_active_plan PASSED [ 74%]
+TestAppTemplate    | tests/test_media_tasks.py::test_cleanup_expired_media_deletes_at_exact_boundary PASSED [ 74%]
+TestAppTemplate    | tests/test_media_upload_intents.py::test_invalid_mime_type_rejected PASSED [ 74%]
+TestAppTemplate    | tests/test_media_upload_intents.py::test_size_exceeds_rejected PASSED    [ 75%]
+TestAppTemplate    | tests/test_media_upload_intents.py::test_foreign_appointment_rejected PASSED [ 75%]
+TestAppTemplate    | tests/test_media_upload_intents.py::test_successful_intent_returns_structure PASSED [ 75%]
+TestAppTemplate    | tests/test_media_upload_intents.py::test_article_image_intent_uses_global_prefix PASSED [ 75%]
+TestAppTemplate    | tests/test_media_use_cases.py::test_article_image_allows_org_null PASSED [ 76%]
+TestAppTemplate    | tests/test_media_use_cases.py::test_foreign_appointment_rejected PASSED  [ 76%]
+TestAppTemplate    | tests/test_media_use_cases.py::test_idempotent_returns_existing PASSED   [ 76%]
+TestAppTemplate    | tests/test_media_use_cases.py::test_attachment_with_client_binding_accepted PASSED [ 77%]
+TestAppTemplate    | tests/test_push_notifications.py::test_push_worker_routes_by_platform_and_marks_sent PASSED [ 77%]
+TestAppTemplate    | tests/test_push_notifications.py::test_push_worker_schedules_retry_with_exponential_backoff PASSED [ 77%]
+TestAppTemplate    | tests/test_push_notifications.py::test_push_worker_marks_failed_after_max_attempts PASSED [ 77%]
+TestAppTemplate    | tests/test_push_notifications.py::test_scheduler_supports_all_scenarios_and_is_idempotent PASSED [ 78%]
+TestAppTemplate    | tests/test_push_notifications.py::test_e2e_smoke_scheduler_to_dry_run_providers_without_duplicates PASSED [ 78%]
+TestAppTemplate    | tests/test_push_notifications.py::test_provider_network_errors_are_retryable PASSED [ 78%]
+TestAppTemplate    | tests/test_security.py::TestMediaUploadIntentValidation::test_invalid_mime_type_rejected PASSED [ 78%]
+TestAppTemplate    | tests/test_security.py::TestMediaUploadIntentValidation::test_file_name_path_traversal_blocked PASSED [ 79%]
+TestAppTemplate    | tests/test_security.py::TestMediaUploadIntentValidation::test_file_name_special_chars_blocked PASSED [ 79%]
+TestAppTemplate    | tests/test_security.py::TestMediaUploadIntentValidation::test_size_exceeds_limit PASSED [ 79%]
+TestAppTemplate    | tests/test_security.py::TestMediaUploadIntentValidation::test_invalid_kind_rejected PASSED [ 79%]
+TestAppTemplate    | tests/test_security.py::TestOrganizationIsolation::test_client_from_other_org_rejected PASSED [ 80%]
+TestAppTemplate    | tests/test_security.py::TestOrganizationIsolation::test_appointment_from_other_org_rejected PASSED [ 80%]
+TestAppTemplate    | tests/test_security.py::TestMediaFinalizeEndpoint::test_foreign_appointment_rejected PASSED [ 80%]
+TestAppTemplate    | tests/test_security.py::TestMediaFinalizeEndpoint::test_article_image_allows_org_null PASSED [ 80%]
+TestAppTemplate    | tests/test_security.py::TestMediaFinalizeEndpoint::test_repeated_storage_key_returns_existing_record PASSED [ 81%]
+TestAppTemplate    | tests/test_security.py::TestErrorMessageSafety::test_error_messages_generic PASSED [ 81%]
+TestAppTemplate    | tests/test_security.py::TestErrorMessageSafety::test_database_error_hidden PASSED [ 81%]
+TestAppTemplate    | tests/test_security.py::TestSecurityHeaders::test_xss_protection_header PASSED [ 81%]
+TestAppTemplate    | tests/test_security.py::TestSecurityHeaders::test_content_type_options_header PASSED [ 82%]
+TestAppTemplate    | tests/test_security.py::TestSecurityHeaders::test_frame_options_header PASSED [ 82%]
+TestAppTemplate    | tests/test_security.py::TestSecurityHeaders::test_referrer_policy_header PASSED [ 82%]
+TestAppTemplate    | tests/test_security.py::TestSecurityHeaders::test_csp_header PASSED      [ 83%]
+TestAppTemplate    | tests/test_security.py::TestSecurityHeaders::test_no_server_header PASSED [ 83%]
+TestAppTemplate    | tests/test_security.py::TestCORSConfiguration::test_cors_origin_validation PASSED [ 83%]
+TestAppTemplate    | tests/test_security.py::TestLoggingPIIFiltering::test_pii_filter_masks_email PASSED [ 83%]
+TestAppTemplate    | tests/test_security.py::TestLoggingPIIFiltering::test_pii_filter_masks_phone PASSED [ 84%]
+TestAppTemplate    | tests/test_security.py::TestLoggingPIIFiltering::test_pii_filter_masks_uuid PASSED [ 84%]
+TestAppTemplate    | tests/test_subscription.py::test_1_trial_to_limited PASSED               [ 84%]
+TestAppTemplate    | tests/test_subscription.py::test_2_validate_receipt_to_active PASSED     [ 84%]
+TestAppTemplate    | tests/test_subscription.py::test_3_idempotency PASSED                    [ 85%]
+TestAppTemplate    | tests/test_subscription.py::test_4_limited_blocks_write PASSED           [ 85%]
+TestDBTemplate     | 2026-05-14 08:35:33.684 UTC [701] ERROR:  duplicate key value violates unique constraint "promo_code_redemptions_user_id_code_key"
+TestAppTemplate    | tests/test_subscription.py::test_5_promo_concurrency PASSED              [ 85%]
+TestDBTemplate     | 2026-05-14 08:35:33.684 UTC [701] DETAIL:  Key (user_id, code)=(c984733e-d863-4507-b6b2-0f983c41705b, TESTPROMO) already exists.
+TestDBTemplate     | 2026-05-14 08:35:33.684 UTC [701] STATEMENT:  INSERT INTO promo_code_redemptions (user_id, code) VALUES ($1::UUID, $2::VARCHAR) RETURNING promo_code_redemptions.id
+TestAppTemplate    | tests/test_subscription.py::test_6_admin_grant_limit PASSED              [ 85%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_apply_mask_listed_fields_nulled PASSED [ 86%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_apply_mask_does_not_mutate_original PASSED [ 86%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_apply_mask_absent_field_skipped PASSED [ 86%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_apply_mask_empty_mask_list PASSED [ 86%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_apply_mask_all_client_fields PASSED [ 87%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_apply_mask_all_appointment_fields PASSED [ 87%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_trial_when_trial_in_future PASSED [ 87%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_active_when_trial_expired_period_alive PASSED [ 87%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_when_both_expired PASSED [ 88%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_no_trial_period_expired PASSED [ 88%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_trial_can_write_no_limits PASSED [ 88%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_active_can_write_no_limits PASSED [ 89%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_limited_cannot_write_has_limits PASSED [ 89%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_require_active_subscription_trial_passes PASSED [ 89%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_require_active_subscription_active_passes PASSED [ 89%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_require_active_subscription_limited_raises_403 PASSED [ 90%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_require_client_write_trial_passes PASSED [ 90%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_require_client_write_active_passes PASSED [ 90%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_require_client_write_limited_below_cap_passes PASSED [ 90%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_require_client_write_limited_at_cap_raises PASSED [ 91%]
+TestAppTemplate    | tests/test_subscription_policy.py::test_require_client_write_limited_above_cap_raises PASSED [ 91%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_create_tag_success PASSED              [ 91%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_create_tag_raises_when_name_already_exists PASSED [ 91%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_get_all_tags_returns_only_org_tags PASSED [ 92%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_get_tag_by_id_raises_when_missing PASSED [ 92%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_get_tag_by_id_success PASSED           [ 92%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_patch_tag_success PASSED               [ 92%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_patch_tag_not_found PASSED             [ 93%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_patch_tag_already_exists PASSED        [ 93%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_delete_tag_success PASSED              [ 93%]
+TestAppTemplate    | tests/test_tag_use_cases.py::test_delete_tag_not_found PASSED            [ 93%]
+TestAppTemplate    | tests/test_telemetry_dao.py::test_telemetry_insert_creates_record PASSED [ 94%]
+TestAppTemplate    | tests/test_telemetry_dao.py::test_telemetry_insert_duplicate_is_idempotent PASSED [ 94%]
+TestAppTemplate    | tests/test_telemetry_dao.py::test_telemetry_insert_duplicate_returns_none PASSED [ 94%]
+TestAppTemplate    | tests/test_telemetry_dao.py::test_telemetry_same_event_id_different_users_are_independent PASSED [ 95%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_valid_events_accepted PASSED     [ 95%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_valid_event_sets_user_and_org_from_context PASSED [ 95%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_timestamp_too_old_rejected PASSED [ 95%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_timestamp_in_future_rejected PASSED [ 96%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_timestamp_exactly_30_days_ago_accepted PASSED [ 96%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_naive_datetime_treated_as_utc PASSED [ 96%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_pii_email_in_meta_rejected PASSED [ 96%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_pii_phone_in_meta_rejected PASSED [ 97%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_pii_error_does_not_contain_value PASSED [ 97%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_pii_nested_in_meta_rejected PASSED [ 97%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_clean_meta_accepted PASSED       [ 97%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_meta_too_large_rejected PASSED   [ 98%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_meta_none_does_not_crash PASSED  [ 98%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_feature_use_without_feature_code_rejected PASSED [ 98%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_feature_use_with_feature_code_accepted PASSED [ 98%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_screen_view_without_screen_name_rejected PASSED [ 99%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_article_view_without_article_id_rejected PASSED [ 99%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_duplicate_event_counted_as_accepted PASSED [ 99%]
+TestAppTemplate    | tests/test_telemetry_use_cases.py::test_partial_batch_correct_indices PASSED [100%]
+TestAppTemplate    | 
+TestAppTemplate    | =================================== FAILURES ===================================
+TestAppTemplate    | ______________ test_create_generation_job_logs_queued_and_commits ______________
+TestAppTemplate    | 
+TestAppTemplate    | monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x79f1228dcf80>
+TestAppTemplate    | 
+TestAppTemplate    |     @pytest.mark.asyncio
+TestAppTemplate    |     async def test_create_generation_job_logs_queued_and_commits(monkeypatch):
+TestAppTemplate    |         dao = FakeJobDAO()
+TestAppTemplate    |         use_case = CreateGenerationJobUseCase(dao, None)
+TestAppTemplate    |     
+TestAppTemplate    | >       job = await use_case.execute(payload=type("P", (), {"range_from": None, "range_to": None, "reason": "manual"})(), org_id=uuid4(), master_id=uuid4())
+TestAppTemplate    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_booking_slot_generation_job.py:51: 
+TestAppTemplate    | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+TestAppTemplate    | src/use_cases/booking_slot_generation_job.py:19: in execute
+TestAppTemplate    |     job = await self._job_dao.create(
+TestAppTemplate    | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+TestAppTemplate    | 
+TestAppTemplate    | self = FakeJobDAO(_session=<tests.test_booking_slot_generation_job.FakeCommitSession object at 0x79f1228dce30>)
+TestAppTemplate    | org_id = UUID('5897be8d-104d-4be5-b6fe-2f1082e5d3f4')
+TestAppTemplate    | master_id = UUID('aeec5428-80a9-4de0-b375-009157c90ee4'), range_from = None
+TestAppTemplate    | range_to = None, reason = 'manual'
+TestAppTemplate    | 
+TestAppTemplate    |     async def create(self, org_id, master_id, range_from, range_to, reason):
+TestAppTemplate    | >       job = BookingSlotGenerationJobDTO(
+TestAppTemplate    |             id=uuid4(),
+TestAppTemplate    |             org_id=org_id,
+TestAppTemplate    |             master_id=master_id,
+TestAppTemplate    |             range_from=range_from,
+TestAppTemplate    |             range_to=range_to,
+TestAppTemplate    |             reason=reason,
+TestAppTemplate    |             status="queued",
+TestAppTemplate    |             error_text=None,
+TestAppTemplate    |             attempts=0,
+TestAppTemplate    |             created_at=None,
+TestAppTemplate    |             started_at=None,
+TestAppTemplate    |             finished_at=None,
+TestAppTemplate    |         )
+TestAppTemplate    | E       pydantic_core._pydantic_core.ValidationError: 3 validation errors for BookingSlotGenerationJobDTO
+TestAppTemplate    | E       range_from
+TestAppTemplate    | E         Input should be a valid date [type=date_type, input_value=None, input_type=NoneType]
+TestAppTemplate    | E           For further information visit https://errors.pydantic.dev/2.13/v/date_type
+TestAppTemplate    | E       range_to
+TestAppTemplate    | E         Input should be a valid date [type=date_type, input_value=None, input_type=NoneType]
+TestAppTemplate    | E           For further information visit https://errors.pydantic.dev/2.13/v/date_type
+TestAppTemplate    | E       created_at
+TestAppTemplate    | E         Input should be a valid datetime [type=datetime_type, input_value=None, input_type=NoneType]
+TestAppTemplate    | E           For further information visit https://errors.pydantic.dev/2.13/v/datetime_type
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_booking_slot_generation_job.py:24: ValidationError
+TestAppTemplate    | ______________ test_export_download_link_happy_and_negative_paths ______________
+TestAppTemplate    | 
+TestAppTemplate    | monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x79f1228dddc0>
+TestAppTemplate    | 
+TestAppTemplate    |     @pytest.mark.asyncio
+TestAppTemplate    |     async def test_export_download_link_happy_and_negative_paths(monkeypatch):
+TestAppTemplate    |         org_id = uuid4()
+TestAppTemplate    |         job = _export_job(org_id=org_id, status="done", expires_delta_seconds=90)
+TestAppTemplate    |         job_dao = FakeJobDAO(job)
+TestAppTemplate    |     
+TestAppTemplate    |         monkeypatch.setattr(
+TestAppTemplate    |             export_use_cases,
+TestAppTemplate    |             "generate_presigned_get_url",
+TestAppTemplate    |             lambda *, key, expires_in: {"url": f"https://example.invalid/{key}", "expires_in": expires_in},
+TestAppTemplate    |         )
+TestAppTemplate    |         monkeypatch.setattr(export_use_cases.settings, "CLIENT_EXPORT_LINK_EXPIRES_SECONDS", 60, raising=False)
+TestAppTemplate    |     
+TestAppTemplate    |         status = await GetClientExportJobStatusUseCase(job_dao).execute(job_id=job.id, org_id=org_id)
+TestAppTemplate    |         assert status.status == "done"
+TestAppTemplate    |     
+TestAppTemplate    |         # Correct user gets link
+TestAppTemplate    | >       link = await GetClientExportJobDownloadLinkUseCase(job_dao).execute(job_id=job.id, org_id=org_id, user_id=job.requested_by)
+TestAppTemplate    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_client_export_jobs.py:140: 
+TestAppTemplate    | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+TestAppTemplate    | 
+TestAppTemplate    | self = GetClientExportJobDownloadLinkUseCase(_job_dao=FakeJobDAO(_session=<tests.test_client_export_jobs.FakeCommitSession object at 0x79f1228dc530>))
+TestAppTemplate    | job_id = UUID('4e863470-d379-46b4-9fbd-7082d1e90ea4')
+TestAppTemplate    | org_id = UUID('df7194a4-7444-4705-9e84-91e2f99b15ed')
+TestAppTemplate    | user_id = UUID('14a2433f-e5ea-4454-9ac6-419a0678f47c'), ip_address = None
+TestAppTemplate    | user_agent = None
+TestAppTemplate    | 
+TestAppTemplate    |     async def execute(self, job_id: UUID, org_id: UUID, user_id: UUID | None = None, ip_address: str | None = None, user_agent: str | None = None) -> dict:
+TestAppTemplate    |         job = await self._job_dao.get_by_id_for_org(job_id, org_id)
+TestAppTemplate    |         if job is None:
+TestAppTemplate    |             raise MediaArchiveJobNotFoundError(str(job_id))
+TestAppTemplate    |     
+TestAppTemplate    |         if job.status == "failed":
+TestAppTemplate    |             raise MediaArchiveJobFailedError(str(job_id), job.error_message)
+TestAppTemplate    |         if job.status != "done":
+TestAppTemplate    |             raise MediaArchiveJobNotReadyError(str(job_id), job.status)
+TestAppTemplate    |     
+TestAppTemplate    |         result_expires_at = _normalize_utc(job.result_expires_at)
+TestAppTemplate    |         if result_expires_at is None:
+TestAppTemplate    |             raise MediaArchiveResultExpiredError(str(job_id))
+TestAppTemplate    |     
+TestAppTemplate    |         now = datetime.datetime.now(datetime.timezone.utc)
+TestAppTemplate    |         if now >= result_expires_at:
+TestAppTemplate    | >           raise MediaArchiveResultExpiredError(str(job_id))
+TestAppTemplate    | E           exceptions.media.MediaArchiveResultExpiredError: Archive result has expired: 4e863470-d379-46b4-9fbd-7082d1e90ea4
+TestAppTemplate    | 
+TestAppTemplate    | src/use_cases/client_export_jobs.py:76: MediaArchiveResultExpiredError
+TestAppTemplate    | ________________________ test_create_client_import_job _________________________
+TestAppTemplate    | 
+TestAppTemplate    | client = <httpx.AsyncClient object at 0x79f1228de570>, auth_headers = {}
+TestAppTemplate    | 
+TestAppTemplate    |     @pytest.mark.asyncio
+TestAppTemplate    |     async def test_create_client_import_job(client, auth_headers):
+TestAppTemplate    |         """Test creating a client import job."""
+TestAppTemplate    |     
+TestAppTemplate    |         # Mock data
+TestAppTemplate    |         org_id = uuid.uuid4()
+TestAppTemplate    |         job_id = uuid.uuid4()
+TestAppTemplate    |         user_id = uuid.uuid4()
+TestAppTemplate    |         storage_key = "s3://bucket/import-file.csv"
+TestAppTemplate    |     
+TestAppTemplate    |         # Create mock DTO
+TestAppTemplate    | >       mock_job_dto = ClientImportJobDTO(
+TestAppTemplate    |             id=job_id,
+TestAppTemplate    |             org_id=org_id,
+TestAppTemplate    |             status="queued",
+TestAppTemplate    |             requested_by=user_id,
+TestAppTemplate    |             input_storage_key=storage_key,
+TestAppTemplate    |             result_storage_key=None,
+TestAppTemplate    |             error_message=None,
+TestAppTemplate    |             total_rows=None,
+TestAppTemplate    |             processed_rows=None,
+TestAppTemplate    |             success_count=None,
+TestAppTemplate    |             failed_count=None,
+TestAppTemplate    |             skipped_count=None,
+TestAppTemplate    |             result_expires_at=None,
+TestAppTemplate    |             created_at=datetime.now(timezone.utc),
+TestAppTemplate    |             updated_at=datetime.now(timezone.utc),
+TestAppTemplate    |             started_at=None,
+TestAppTemplate    |             completed_at=None,
+TestAppTemplate    |             failed_at=None,
+TestAppTemplate    |         )
+TestAppTemplate    | E       pydantic_core._pydantic_core.ValidationError: 5 validation errors for ClientImportJobDTO
+TestAppTemplate    | E       total_rows
+TestAppTemplate    | E         Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+TestAppTemplate    | E           For further information visit https://errors.pydantic.dev/2.13/v/int_type
+TestAppTemplate    | E       processed_rows
+TestAppTemplate    | E         Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+TestAppTemplate    | E           For further information visit https://errors.pydantic.dev/2.13/v/int_type
+TestAppTemplate    | E       success_count
+TestAppTemplate    | E         Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+TestAppTemplate    | E           For further information visit https://errors.pydantic.dev/2.13/v/int_type
+TestAppTemplate    | E       failed_count
+TestAppTemplate    | E         Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+TestAppTemplate    | E           For further information visit https://errors.pydantic.dev/2.13/v/int_type
+TestAppTemplate    | E       skipped_count
+TestAppTemplate    | E         Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+TestAppTemplate    | E           For further information visit https://errors.pydantic.dev/2.13/v/int_type
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_client_import.py:67: ValidationError
+TestAppTemplate    | ________________________ test_get_client_import_status _________________________
+TestAppTemplate    | 
+TestAppTemplate    | client = <httpx.AsyncClient object at 0x79f1228daa20>, auth_headers = {}
+TestAppTemplate    | 
+TestAppTemplate    |     @pytest.mark.asyncio
+TestAppTemplate    |     async def test_get_client_import_status(client, auth_headers):
+TestAppTemplate    |         """Test getting client import job status."""
+TestAppTemplate    |     
+TestAppTemplate    |         job_id = uuid.uuid4()
+TestAppTemplate    |         org_id = uuid.uuid4()
+TestAppTemplate    |     
+TestAppTemplate    |         mock_job_dto = ClientImportJobDTO(
+TestAppTemplate    |             id=job_id,
+TestAppTemplate    |             org_id=org_id,
+TestAppTemplate    |             status="processing",
+TestAppTemplate    |             requested_by=None,
+TestAppTemplate    |             input_storage_key="s3://bucket/file.csv",
+TestAppTemplate    |             result_storage_key=None,
+TestAppTemplate    |             error_message=None,
+TestAppTemplate    |             total_rows=100,
+TestAppTemplate    |             processed_rows=50,
+TestAppTemplate    |             success_count=45,
+TestAppTemplate    |             failed_count=5,
+TestAppTemplate    |             skipped_count=0,
+TestAppTemplate    |             result_expires_at=None,
+TestAppTemplate    |             created_at=datetime.now(timezone.utc),
+TestAppTemplate    |             updated_at=datetime.now(timezone.utc),
+TestAppTemplate    |             started_at=datetime.now(timezone.utc),
+TestAppTemplate    |             completed_at=None,
+TestAppTemplate    |             failed_at=None,
+TestAppTemplate    |         )
+TestAppTemplate    |     
+TestAppTemplate    |         with patch(
+TestAppTemplate    |             "api.v1.dependencies.import_jobs.use_cases.get_client_import_job_status_use_case"
+TestAppTemplate    |         ) as mock_get_use_case:
+TestAppTemplate    |             mock_use_case = AsyncMock()
+TestAppTemplate    |             mock_use_case.execute.return_value = mock_job_dto
+TestAppTemplate    |             mock_get_use_case.return_value = mock_use_case
+TestAppTemplate    |     
+TestAppTemplate    |             response = await client.get(
+TestAppTemplate    |                 f"/api/v1/clients/imports/{job_id}",
+TestAppTemplate    |                 headers=auth_headers,
+TestAppTemplate    |             )
+TestAppTemplate    |     
+TestAppTemplate    | >           assert response.status_code == status.HTTP_200_OK
+TestAppTemplate    | E           assert 404 == 200
+TestAppTemplate    | E            +  where 404 = <Response [404 Not Found]>.status_code
+TestAppTemplate    | E            +  and   200 = status.HTTP_200_OK
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_client_import.py:149: AssertionError
+TestAppTemplate    | ----------------------------- Captured stderr call -----------------------------
+TestAppTemplate    | 2026-05-14 08:35:27 - master_podolog - WARNING - [media.py:102] - Archive job not found: Archive job not found: 088ce5c4-2ff3-41b0-8848-d11f4d1d47c3
+TestAppTemplate    | 2026-05-14 08:35:27 - httpx - INFO - [_client.py:1740] - HTTP Request: GET http://test/api/v1/clients/imports/088ce5c4-2ff3-41b0-8848-d11f4d1d47c3 "HTTP/1.1 404 Not Found"
+TestAppTemplate    | ------------------------------ Captured log call -------------------------------
+TestAppTemplate    | WARNING  master_podolog:media.py:102 Archive job not found: Archive job not found: 088ce5c4-2ff3-41b0-8848-d11f4d1d47c3
+TestAppTemplate    | INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/clients/imports/088ce5c4-2ff3-41b0-8848-d11f4d1d47c3 "HTTP/1.1 404 Not Found"
+TestAppTemplate    | ______________________ test_get_client_import_report_link ______________________
+TestAppTemplate    | 
+TestAppTemplate    | client = <httpx.AsyncClient object at 0x79f1223a5490>, auth_headers = {}
+TestAppTemplate    | 
+TestAppTemplate    |     @pytest.mark.asyncio
+TestAppTemplate    |     async def test_get_client_import_report_link(client, auth_headers):
+TestAppTemplate    |         """Test getting client import report download link."""
+TestAppTemplate    |     
+TestAppTemplate    |         job_id = uuid.uuid4()
+TestAppTemplate    |         org_id = uuid.uuid4()
+TestAppTemplate    |         user_id = uuid.uuid4()
+TestAppTemplate    |     
+TestAppTemplate    |         with patch(
+TestAppTemplate    |             "api.v1.dependencies.import_jobs.use_cases.get_client_import_job_report_link_use_case"
+TestAppTemplate    |         ) as mock_get_use_case:
+TestAppTemplate    |             mock_use_case = AsyncMock()
+TestAppTemplate    |             mock_use_case.execute.return_value = {
+TestAppTemplate    |                 "job_id": str(job_id),
+TestAppTemplate    |                 "status": "done",
+TestAppTemplate    |                 "download_url": "https://presigned-url.example.com/report.csv",
+TestAppTemplate    |                 "expires_in": 900,
+TestAppTemplate    |                 "result_expires_at": datetime.now(timezone.utc),
+TestAppTemplate    |             }
+TestAppTemplate    |             mock_get_use_case.return_value = mock_use_case
+TestAppTemplate    |     
+TestAppTemplate    |             response = await client.get(
+TestAppTemplate    |                 f"/api/v1/clients/imports/{job_id}/report-link",
+TestAppTemplate    |                 headers=auth_headers,
+TestAppTemplate    |             )
+TestAppTemplate    |     
+TestAppTemplate    | >           assert response.status_code == status.HTTP_200_OK
+TestAppTemplate    | E           assert 404 == 200
+TestAppTemplate    | E            +  where 404 = <Response [404 Not Found]>.status_code
+TestAppTemplate    | E            +  and   200 = status.HTTP_200_OK
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_client_import.py:182: AssertionError
+TestAppTemplate    | ----------------------------- Captured stderr call -----------------------------
+TestAppTemplate    | 2026-05-14 08:35:27 - master_podolog - WARNING - [media.py:102] - Archive job not found: Archive job not found: c9d206b7-b8f2-462e-b633-7197bccac5b3
+TestAppTemplate    | 2026-05-14 08:35:27 - httpx - INFO - [_client.py:1740] - HTTP Request: GET http://test/api/v1/clients/imports/c9d206b7-b8f2-462e-b633-7197bccac5b3/report-link "HTTP/1.1 404 Not Found"
+TestAppTemplate    | ------------------------------ Captured log call -------------------------------
+TestAppTemplate    | WARNING  master_podolog:media.py:102 Archive job not found: Archive job not found: c9d206b7-b8f2-462e-b633-7197bccac5b3
+
+
+
+TestAppTemplate exited with code 1                                                                                                                                                                                                  
+
+
+TestAppTemplate    | INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/clients/imports/c9d206b7-b8f2-462e-b633-7197bccac5b3/report-link "HTTP/1.1 404 Not Found"
+TestAppTemplate    | =============================== warnings summary ===============================
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\integration\test_media_upload_flow.py:27
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\integration\test_media_upload_flow.py:27: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_audit_dao.py:10
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_audit_dao.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_audit_router.py:6
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_audit_router.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_audit_use_case.py:12
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_audit_use_case.py:12: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_auth_use_cases.py:27
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_auth_use_cases.py:27: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_clients_use_case.py:21
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_clients_use_case.py:21: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_impersonation_use_case.py:11
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_impersonation_use_case.py:11: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_medical_texts_use_case.py:15
+TestAppTemplate    |   /app/tests/test_admin_medical_texts_use_case.py:15: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    |     pytestmark = pytest.mark.no_db
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_audit_payload.py:13
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_audit_payload.py:13: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_auth_protection.py:17
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_auth_protection.py:17: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_booking_slot_generation_job.py:7
+TestAppTemplate    |   /app/tests/test_booking_slot_generation_job.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    |     pytestmark = pytest.mark.no_db
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_client_export_jobs.py:23
+TestAppTemplate    |   /app/tests/test_client_export_jobs.py:23: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    |     pytestmark = pytest.mark.no_db
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_client_import.py:20
+TestAppTemplate    |   /app/tests/test_client_import.py:20: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    |     pytestmark = pytest.mark.no_db
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_device_use_cases.py:11
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_device_use_cases.py:11: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_generate_booking_slot.py:18
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_generate_booking_slot.py:18: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_logging_safety.py:10
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_logging_safety.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_media_archive_jobs.py:26
+TestAppTemplate    |   /app/tests/test_media_archive_jobs.py:26: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    |     pytestmark = pytest.mark.no_db
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_media_subscription_policy.py:27
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_media_subscription_policy.py:27: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_push_notifications.py:19
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_push_notifications.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_security.py:41
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_security.py:41: PytestUnknownMarkWarning: Unknown pytest.mark.no_db - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+TestAppTemplate    | 
+TestAppTemplate    | tests/integration/articles/test_articles_paywall.py: 8 warnings
+TestAppTemplate    | tests/test_admin_articles.py: 4 warnings
+TestAppTemplate    |   /app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    |     return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+TestAppTemplate    | 
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_new_user_gets_trial_entitlements
+TestAppTemplate    | tests/test_client_owner_history.py::test_transfer_owner_updates_client_and_logs_consistent_history
+TestAppTemplate    |   /app/src/use_cases/subscription.py:26: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    |     now = datetime.utcnow()
+TestAppTemplate    | 
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_new_user_gets_trial_entitlements
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_active_subscription_returns_active_plan
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_expired_subscription_returns_limited_plan
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_limited_subscription_raises_403
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_client_cap_reached_with_real_count
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_client_below_cap_passes_with_real_count
+TestAppTemplate    | tests/test_client_owner_history.py::test_transfer_owner_updates_client_and_logs_consistent_history
+TestAppTemplate    | tests/test_subscription.py::test_1_trial_to_limited
+TestAppTemplate    |   /app/src/use_cases/subscription.py:34: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    |     return sub.get_entitlements(datetime.utcnow())
+TestAppTemplate    | 
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_active_subscription_returns_active_plan
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\integration\subscription_policy\test_subscription_policy.py:81: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_expired_subscription_returns_limited_plan
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_limited_subscription_raises_403
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_client_cap_reached_with_real_count
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_guard_client_below_cap_passes_with_real_count
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\integration\subscription_policy\test_subscription_policy.py:48: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/integration/subscription_policy/test_subscription_policy.py::test_count_active_counts_only_non_deleted_clients
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\integration\subscription_policy\test_subscription_policy.py:138: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_master_account.py::test_superadmin_unblocks_master_idempotently_and_audits
+TestAppTemplate    | tests/test_admin_rbac.py::test_require_admin_superadmin_can_block_user
+TestAppTemplate    | tests/test_admin_rbac.py::test_block_user_creates_audit_log
+TestAppTemplate    |   /app/src/db/daos/user.py:61: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    |     .values(sessions_revoked_at=datetime.utcnow())
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_masters.py::test_support_can_filter_masters_without_extra_fields
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_masters.py:44: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_masters.py::test_master_list_pagination_sorting_is_stable
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_masters.py:235: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_masters.py::test_master_list_pagination_sorting_is_stable
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_forwards_filters_and_maps_trial_plan
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_maps_active_and_limited_plans
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_maps_active_and_limited_plans
+TestAppTemplate    |   /app/src/use_cases/admin_masters.py:86: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    |     now = datetime.now(timezone.utc) if value.tzinfo else datetime.utcnow()
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_forwards_filters_and_maps_trial_plan
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_masters_use_case.py:43: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_forwards_filters_and_maps_trial_plan
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_maps_active_and_limited_plans
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_maps_active_and_limited_plans
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_masters_use_case.py:22: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_masters_use_case.py::test_list_masters_use_case_maps_active_and_limited_plans
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_admin_masters_use_case.py:76: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_admin_rbac.py::test_admin_grant_creates_audit_log
+TestAppTemplate    |   /app/src/use_cases/subscription.py:107: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    |     now = datetime.utcnow()
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription.py::test_1_trial_to_limited
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription.py:40: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription.py::test_1_trial_to_limited
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription.py:41: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription.py::test_2_validate_receipt_to_active
+TestAppTemplate    | tests/test_subscription.py::test_3_idempotency
+TestAppTemplate    | tests/test_subscription.py::test_4_limited_blocks_write
+TestAppTemplate    |   /app/src/use_cases/subscription.py:55: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    |     now = datetime.utcnow()
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription.py::test_4_limited_blocks_write
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription.py:89: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription.py::test_4_limited_blocks_write
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription.py:90: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription.py::test_5_promo_concurrency
+TestAppTemplate    | tests/test_subscription.py::test_5_promo_concurrency
+TestAppTemplate    |   /app/src/use_cases/subscription.py:77: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    |     now = datetime.utcnow()
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_trial_when_trial_in_future
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:143: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_trial_when_trial_in_future
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_active_when_trial_expired_period_alive
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_when_both_expired
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_no_trial_period_expired
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_trial_can_write_no_limits
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_active_can_write_no_limits
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_limited_cannot_write_has_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:65: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_trial_when_trial_in_future
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:144: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_active_when_trial_expired_period_alive
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:149: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_active_when_trial_expired_period_alive
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:150: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_active_when_trial_expired_period_alive
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:152: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_when_both_expired
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:157: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_when_both_expired
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:158: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_when_both_expired
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:160: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_no_trial_period_expired
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:166: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_get_plan_limited_no_trial_period_expired
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:168: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_trial_can_write_no_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:173: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_trial_can_write_no_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:174: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_active_can_write_no_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:183: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_active_can_write_no_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:184: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_active_can_write_no_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:186: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_limited_cannot_write_has_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:195: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_limited_cannot_write_has_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:196: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | tests/test_subscription_policy.py::test_entitlements_limited_cannot_write_has_limits
+TestAppTemplate    |   C:\Users\sergeevi4\PycharmProjects\master-podolog-backend\tests\test_subscription_policy.py:198: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+TestAppTemplate    | 
+TestAppTemplate    | -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+TestAppTemplate    | =========================== short test summary info ============================
+TestAppTemplate    | FAILED tests/test_booking_slot_generation_job.py::test_create_generation_job_logs_queued_and_commits
+TestAppTemplate    | FAILED tests/test_client_export_jobs.py::test_export_download_link_happy_and_negative_paths
+TestAppTemplate    | FAILED tests/test_client_import.py::test_create_client_import_job - pydantic_...
+TestAppTemplate    | FAILED tests/test_client_import.py::test_get_client_import_status - assert 40...
+TestAppTemplate    | FAILED tests/test_client_import.py::test_get_client_import_report_link - asse...
+TestAppTemplate    | ================= 5 failed, 378 passed, 97 warnings in 32.65s ==================
+
+
+v View in Docker Desktop   o View Config   w Enable Watch   d Detach
