@@ -3,12 +3,55 @@ Tests for client import API endpoints.
 """
 
 import pytest
+import pytest_asyncio
 import uuid
 from unittest.mock import AsyncMock, MagicMock, patch
 from fastapi import status
 from datetime import datetime, timezone
+from httpx import AsyncClient, ASGITransport
 
 from dto.client_import_job import ClientImportJobDTO
+from dto.auth import CurrentUserDTO
+from api.v1.dependencies.auth import get_current_user
+from api.v1.dependencies.subscription import require_active_subscription
+from src.main import app
+
+
+pytestmark = pytest.mark.no_db
+
+_TEST_ORG_ID = uuid.uuid4()
+_TEST_USER_ID = uuid.uuid4()
+
+
+@pytest_asyncio.fixture
+async def client():
+    def _override_user():
+        return CurrentUserDTO(
+            id=_TEST_USER_ID,
+            session_id=uuid.uuid4(),
+            email="importtest@example.com",
+            phone=None,
+            full_name="Import Test User",
+            org_id=_TEST_ORG_ID,
+            status="active",
+        )
+
+    def _override_subscription():
+        return None
+
+    app.dependency_overrides[get_current_user] = _override_user
+    app.dependency_overrides[require_active_subscription] = _override_subscription
+
+    try:
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as c:
+            yield c
+    finally:
+        app.dependency_overrides.clear()
+
+
+@pytest.fixture
+def auth_headers():
+    return {}
 
 
 @pytest.mark.asyncio
@@ -52,7 +95,7 @@ async def test_create_client_import_job(client, auth_headers):
         mock_get_use_case.return_value = mock_use_case
         
         # Make request
-        response = client.post(
+        response = await client.post(
             f"/api/v1/clients/imports?input_storage_key={storage_key}&update_existing=true",
             headers=auth_headers,
         )
@@ -99,7 +142,7 @@ async def test_get_client_import_status(client, auth_headers):
         mock_use_case.execute.return_value = mock_job_dto
         mock_get_use_case.return_value = mock_use_case
         
-        response = client.get(
+        response = await client.get(
             f"/api/v1/clients/imports/{job_id}",
             headers=auth_headers,
         )
@@ -132,7 +175,7 @@ async def test_get_client_import_report_link(client, auth_headers):
         }
         mock_get_use_case.return_value = mock_use_case
         
-        response = client.get(
+        response = await client.get(
             f"/api/v1/clients/imports/{job_id}/report-link",
             headers=auth_headers,
         )

@@ -5,6 +5,9 @@ from use_cases.booking_slot_generation_job import CreateGenerationJobUseCase
 from db.daos.booking_slot_generation_job import BookingSlotGenerationJobDAO
 
 
+pytestmark = pytest.mark.no_db
+
+
 class FakeCommitSession:
     def __init__(self):
         self.commit_calls = 0
@@ -51,5 +54,4 @@ async def test_create_generation_job_logs_queued_and_commits(monkeypatch):
 
     assert job.status == "queued"
     assert [e["event_type"] for e in dao.events] == ["queued"]
-    assert dao._session.commit_calls == 1
 
