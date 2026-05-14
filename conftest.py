@@ -104,14 +104,6 @@ def setup_db(request):
     asyncio.run(_drop())
 
 
-@pytest_asyncio.fixture
-async def db_session():
-    engine = create_async_engine(TEST_DB_URL, poolclass=NullPool)
-    session_factory = async_sessionmaker(engine, expire_on_commit=False)
-    async with session_factory() as session:
-        yield session
-        await session.commit()
-    await engine.dispose()
 pytest_plugins = [
     "tests.fixtures.usecase.booking_request",
     "tests.fixtures.infrastructure",

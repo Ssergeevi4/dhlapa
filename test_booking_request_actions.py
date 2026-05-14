@@ -101,7 +101,6 @@ def _build_use_case(
         _booking_slot_dao=booking_slot_dao,
         _appointment_dao=AsyncMock(),
         _client_dao=AsyncMock(),
-        _session=AsyncMock(),
     )
 
 
