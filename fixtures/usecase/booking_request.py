@@ -38,14 +38,21 @@ async def booking_use_case_factory(engine):
     async def _create_use_case():
         session = session_factory()
         created_sessions.append(session)
-        return CreatePublicBookingRequestUseCase(
+        inner = CreatePublicBookingRequestUseCase(
             _booking_request_dao=BookingRequestDAO(session),
             _booking_slot_dao=BookingSlotDAO(session),
             _appointment_dao=AppointmentDAO(session),
             _price_service_dao=PriceServiceDAO(session),
             _client_dao=ClientDAO(session),
-            _session=session,
         )
+
+        class _UCWithCommit:
+            async def execute(self, *args, **kwargs):
+                result = await inner.execute(*args, **kwargs)
+                await session.commit()
+                return result
+
+        return _UCWithCommit()
 
     yield _create_use_case
 
@@ -66,7 +73,6 @@ async def process_action_use_case_factory(engine):
             _booking_slot_dao=BookingSlotDAO(session),
             _appointment_dao=AppointmentDAO(session),
             _client_dao=ClientDAO(session),
-            _session=session,
         )
 
         # Оборачиваем: после execute делаем commit,

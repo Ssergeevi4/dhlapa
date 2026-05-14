@@ -2,6 +2,7 @@ import asyncio
 import datetime
 
 import pytest
+import pytest_asyncio
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy import NullPool, delete, update
 from db.models import AdminSessionModel, BookingRequestModel, AppointmentModel, ClientModel
@@ -21,7 +22,7 @@ def engine():
     return create_async_engine(db_url, poolclass=NullPool)
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def db_session(engine):
     session_factory = async_sessionmaker(engine, expire_on_commit=False)
     async with session_factory() as session:
