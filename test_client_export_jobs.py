@@ -81,7 +81,7 @@ class FakeJobDAO(ClientExportJobDAO):
 
 
 def _export_job(org_id=None, status="done", expires_delta_seconds=120, result_key: str | None = "org/x/exports/job.csv", requested_by=None, error_message=None):
-    now = datetime.datetime(2026, 4, 24, 12, 0, 0, tzinfo=datetime.timezone.utc)
+    now = datetime.datetime.now(datetime.timezone.utc)
     return ClientExportJobDTO(
         id=uuid4(),
         org_id=org_id or uuid4(),
@@ -159,4 +159,3 @@ async def test_export_download_link_happy_and_negative_paths(monkeypatch):
     job_dao.job = expired_job
     with pytest.raises(MediaArchiveResultExpiredError):
         await GetClientExportJobDownloadLinkUseCase(job_dao).execute(job_id=expired_job.id, org_id=org_id, user_id=expired_job.requested_by)
-

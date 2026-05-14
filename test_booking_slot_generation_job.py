@@ -1,3 +1,4 @@
+from datetime import date, datetime, timezone
 from uuid import uuid4
 import pytest
 from dto.booking_slot_generation_job import BookingSlotGenerationJobDTO
@@ -23,6 +24,7 @@ class FakeJobDAO(BookingSlotGenerationJobDAO):
         self.events = []
 
     async def create(self, org_id, master_id, range_from, range_to, reason):
+        now = datetime.now(timezone.utc)
         job = BookingSlotGenerationJobDTO(
             id=uuid4(),
             org_id=org_id,
@@ -33,7 +35,7 @@ class FakeJobDAO(BookingSlotGenerationJobDAO):
             status="queued",
             error_text=None,
             attempts=0,
-            created_at=None,
+            created_at=now,
             started_at=None,
             finished_at=None,
         )
@@ -49,9 +51,13 @@ class FakeJobDAO(BookingSlotGenerationJobDAO):
 async def test_create_generation_job_logs_queued_and_commits(monkeypatch):
     dao = FakeJobDAO()
     use_case = CreateGenerationJobUseCase(dao, None)
+    today = date.today()
 
-    job = await use_case.execute(payload=type("P", (), {"range_from": None, "range_to": None, "reason": "manual"})(), org_id=uuid4(), master_id=uuid4())
+    job = await use_case.execute(
+        payload=type("P", (), {"range_from": today, "range_to": today, "reason": "manual"})(),
+        org_id=uuid4(),
+        master_id=uuid4(),
+    )
 
     assert job.status == "queued"
     assert [e["event_type"] for e in dao.events] == ["queued"]
-
